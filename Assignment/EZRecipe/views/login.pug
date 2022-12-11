@@ -1,0 +1,17 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title Login
+  body
+    form(action='/login', method='post')
+      fieldset
+        legend User Information
+        p
+          label email:
+          input(name='email', type='text')
+        p
+          label Password:
+          input(name='password', type='password')
+        p
+          input(type='submit', value='Submit')

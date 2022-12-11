@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <script>
+
+function validateForm(form) {
+    fail = validateUsername(form.username.value)
+    fail += validateEmail(form.email.value)
+    fail += validatePassword(form.password.value)
+    if (fail == "") {
+        alert("Validate Successfully!")
+        return true
+    }
+    else {
+        alert(fail)
+        return false
+    }
+}
+
+function validateUsername(field) {
+    if (field == "") return "Username is empty.\n"
+    if (/[^a-zA-Z0-9_-]/.test(field)) return "The username can contain English letters (capitalized or not), digits, and the characters '_' (underscore) and '-' (dash). Nothing else.\n"
+    return ""
+}
+
+function validateEmail(field) {
+    if (field == "") return "Email is empty.\n"
+    if (!((field.indexOf(".") > 0) && (field.indexOf("@") > 0)) || /[^a-zA-Z0-9.@_-]/.test(field))return "The email must be well formatted.\n"
+    return ""
+}
+
+function validatePassword(field) {
+    if (field == "") return "Password is empty.\n"
+    if (field.length < 6)return "Passwords must be at least 6 characters.\n"
+    if (!/[a-z]/.test(field) || !/[A-Z]/.test(field) ||!/[0-9]/.test(field)) return "Passwords must have lower case, upper case, and digits together\n"
+    return ""
+}
+
+    </script>
+</head>
+
+<body>
+<table border="0" cellpadding="2" cellspacing="5" bgcolor="#ffe4c4">
+    <th colspan="2" align="center">Sign Up Form</th>
+    <form method="post" action="serverValidate.php" onsubmit="return validateForm(this)">
+        <tr>
+            <td>Username</td>
+            <td><input type="text" maxlength="32" name="username"></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" maxlength="32" name="email"></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" maxlength="16" name="password"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><input type="submit" value="signup"></td>
+        </tr>
+    </form>
+</table>
+</body>
+</html>
